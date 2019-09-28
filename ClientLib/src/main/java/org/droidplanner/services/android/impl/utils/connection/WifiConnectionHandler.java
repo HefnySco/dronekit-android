@@ -99,7 +99,9 @@ public class WifiConnectionHandler {
 
                     switch (networkState) {
                         case CONNECTED:
-                            final WifiInfo wifiInfo = intent.getParcelableExtra(WifiManager.EXTRA_WIFI_INFO);
+                            //BUG: https://stackoverflow.com/questions/16285856/why-is-this-wifiinfo-sometimes-null-on-android
+                            final WifiManager wifiManager = (WifiManager) context.getSystemService(Context.WIFI_SERVICE);
+                            final WifiInfo wifiInfo = wifiManager.getConnectionInfo(); //intent.getParcelableExtra(WifiManager.EXTRA_WIFI_INFO);
                             final String wifiSSID = wifiInfo.getSSID();
                             Timber.i("Connected to " + wifiSSID);
 
