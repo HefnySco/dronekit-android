@@ -858,6 +858,8 @@ public class GenericMavLinkDrone implements MavLinkDrone {
             positionUpdated = true;
         }
 
+        vehicleGps.setRelative_altitude(gpi.relative_alt);
+
         if (positionUpdated) {
             notifyAttributeListener(AttributeEvent.GPS_POSITION);
         }

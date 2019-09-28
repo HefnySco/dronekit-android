@@ -28,6 +28,8 @@ public class Gps implements DroneAttribute {
     private boolean vehicleArmed;
     private EkfStatus ekfStatus;
 
+    private double relative_altitude;
+    
     public Gps() {  }
 
     public Gps(LatLong position, double gpsEph, int satCount, int fixType){
@@ -88,6 +90,10 @@ public class Gps implements DroneAttribute {
         }
     }
 
+    public double getRelative_altitude(){
+        return relative_altitude;
+    } 
+
     public void setGpsEph(double gpsEph) {
         this.gpsEph = gpsEph;
     }
@@ -112,6 +118,10 @@ public class Gps implements DroneAttribute {
         this.vehicleArmed = vehicleArmed;
     }
 
+    public void setRelative_altitude(double relative_altitude) {
+        this.relative_altitude = relative_altitude;
+    }
+    
     /**
      * @return True if there's a 3D GPS lock, false otherwise.
      * @since 2.6.8
@@ -174,6 +184,7 @@ public class Gps implements DroneAttribute {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
+        dest.writeDouble(this.relative_altitude);
         dest.writeDouble(this.gpsEph);
         dest.writeInt(this.satCount);
         dest.writeInt(this.fixType);
@@ -183,6 +194,7 @@ public class Gps implements DroneAttribute {
     }
 
     private Gps(Parcel in) {
+        this.relative_altitude = in.readDouble();
         this.gpsEph = in.readDouble();
         this.satCount = in.readInt();
         this.fixType = in.readInt();
