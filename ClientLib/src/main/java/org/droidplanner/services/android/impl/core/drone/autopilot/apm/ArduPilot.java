@@ -218,6 +218,10 @@ public abstract class ArduPilot extends GenericMavLinkDrone {
                 }
                 return true;
 
+            case ControlActions.ACTION_RESET_ROI:
+                MavLinkDoCmds.resetROI(this, listener);
+                return true;
+
             case ExperimentalActions.ACTION_SET_RELAY:
                 int relayNumber = data.getInt(ExperimentalActions.EXTRA_RELAY_NUMBER);
                 boolean isOn = data.getBoolean(ExperimentalActions.EXTRA_IS_RELAY_ON);

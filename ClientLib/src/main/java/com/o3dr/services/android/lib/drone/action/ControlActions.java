@@ -53,6 +53,12 @@ public class ControlActions {
      */
     public static final String EXTRA_LOOK_AT_TARGET = "extra_look_at_target";
 
+
+    /*
+     *   reset region of interest
+     */
+    public static final String ACTION_RESET_ROI = Utils.PACKAGE_NAME + ".action.RESET_ROI";
+
     //Private to prevent instantiation
     private ControlActions(){}
 

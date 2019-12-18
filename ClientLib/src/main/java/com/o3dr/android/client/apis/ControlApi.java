@@ -209,6 +209,15 @@ public class ControlApi extends Api {
         drone.performAsyncActionOnDroneThread(new Action(ACTION_ENABLE_MANUAL_CONTROL, params), listenerWrapper);
     }
 
+     /*
+     *   reset region of interest so yaw will follow default mode again
+     */
+    public void reset_roi (final AbstractCommandListener listener){
+
+        Bundle params = new Bundle();
+        drone.performAsyncActionOnDroneThread(new Action(ACTION_RESET_ROI, params), listener);
+    }
+
     private static boolean isWithinBounds(float value, float lowerBound, float upperBound) {
         return value <= upperBound && value >= lowerBound;
     }
