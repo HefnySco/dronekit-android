@@ -519,6 +519,7 @@ public class FtdiSerialDriver extends CommonUsbSerialDriver {
                 new int[] {
                     UsbId.FTDI_FT232R,
                     UsbId.FTDI_FT231X,                    
+                    UsbId.DEVICE_PIXHAWK_2_CUBE,
                 });
         return supportedDevices;
     }

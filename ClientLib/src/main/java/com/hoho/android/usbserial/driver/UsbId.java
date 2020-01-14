@@ -32,6 +32,7 @@ public final class UsbId {
     public static final int VENDOR_FTDI = 0x0403;
     public static final int FTDI_FT232R = 0x6001;
     public static final int FTDI_FT231X = 0x6015;
+    public static final int DEVICE_PIXHAWK_2_CUBE = 0x0016;
 
     public static final int VENDOR_PX4    = 0x26AC;
     public static final int DEVICE_PX4FMU = 0x11;
@@ -57,7 +58,7 @@ public final class UsbId {
 
     public static final int VENDOR_LEAFLABS = 0x1eaf;
     public static final int LEAFLABS_MAPLE = 0x0004;
-
+    
     public static final int VENDOR_SILAB = 0x10c4;
     public static final int SILAB_CP2102 = 0xea60;
 
@@ -80,8 +81,12 @@ public final class UsbId {
     public static final int VENDOR_ARDUPILOT_CHIBIOS2 = 0x1209;
     public static final int DEVICE_ARDUPILOT_CHIBIOS =  0x5740;
 
-    public static final int VENDOR_DRAGONLINK = 0x1FC9;
+    public static final int VENDOR_DRAGONLINK = 0x1fc9;
     public static final int DEVICE_DRAGONLINK = 0x0083;
+
+    public static final int VENDOR_RADIOLINK_MINI = 0x26ac;
+    public static final int DEVICE_RADIOLINK_MINI = 0x0016;
+
 
 
     private UsbId() {

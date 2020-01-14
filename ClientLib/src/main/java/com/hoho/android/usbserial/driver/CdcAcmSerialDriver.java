@@ -281,15 +281,15 @@ public class CdcAcmSerialDriver extends CommonUsbSerialDriver {
                 });
         supportedDevices.put(UsbId.VENDOR_VAN_OOIJEN_TECH,
                 new int[] {
-                        UsbId.VAN_OOIJEN_TECH_TEENSYDUINO_SERIAL,
+                    UsbId.VAN_OOIJEN_TECH_TEENSYDUINO_SERIAL,
                 });
         supportedDevices.put(UsbId.VENDOR_ATMEL,
                 new int[] {
-                        UsbId.ATMEL_LUFA_CDC_DEMO_APP,
+                    UsbId.ATMEL_LUFA_CDC_DEMO_APP,
                 });
         supportedDevices.put(UsbId.VENDOR_LEAFLABS,
                 new int[] {
-                        UsbId.LEAFLABS_MAPLE,
+                    UsbId.LEAFLABS_MAPLE,
                 });
         supportedDevices.put(UsbId.VENDOR_ARDUINO2,
                 new int[] {
@@ -325,6 +325,10 @@ public class CdcAcmSerialDriver extends CommonUsbSerialDriver {
         supportedDevices.put(Integer.valueOf(UsbId.VENDOR_DRAGONLINK),
                 new int[] {
                         UsbId.DEVICE_DRAGONLINK,
+                });
+        supportedDevices.put(Integer.valueOf(UsbId.VENDOR_RADIOLINK_MINI),
+                new int[] {
+                        UsbId.DEVICE_RADIOLINK_MINI,
                 });
         return supportedDevices;
     }
