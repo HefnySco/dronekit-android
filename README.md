@@ -1,3 +1,14 @@
+# DroneKit-Android 2020
+ This library contains some fixes necessary for newer Android versions as well as defining more boards etc.
+ You are welcome to fork it and add your own updates here.
+ I try to send updates to the original repository but I am not sure that if developing is still active.
+ 
+###  CHANE LOG:
+   - fixing wifi issue for newer Android version.
+   - update SDK. note that this does not pass original test script.
+   - adding usb support for many boards .
+   - adding submarine vehicle.
+   
 # DroneKit-Android
 
 ![dronekit_python_logo](https://cloud.githubusercontent.com/assets/5368500/10805537/90dd4b14-7e22-11e5-9592-5925348a7df9.png)
