@@ -39,4 +39,5 @@
 
     <usb-device vendor-id="11694" product-id="4113" />  <!-- Pixhawk 2.1 Cube USB\VID_2DAE&PID_1011&REV_0200-->
 
+
 </resources>
