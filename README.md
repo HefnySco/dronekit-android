@@ -3,7 +3,7 @@
  You are welcome to fork it and add your own updates here.
  I try to send updates to the original repository but I am not sure that if developing is still active.
  
-###  CHANE LOG:
+###  CHANGE LOG:
    - fixing wifi issue for newer Android version.
    - update SDK. note that this does not pass original test script.
    - adding usb support for many boards .
