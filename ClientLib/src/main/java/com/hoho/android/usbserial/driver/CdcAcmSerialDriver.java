@@ -9,6 +9,8 @@ import android.os.Build;
 import android.util.Log;
 import android.util.SparseArray;
 
+import com.o3dr.android.client.BuildConfig;
+
 import java.io.IOException;
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -121,7 +123,6 @@ public class CdcAcmSerialDriver extends CommonUsbSerialDriver {
             Log.d(TAG, "Write endpoint direction: " + mWriteEndpoint.getDirection());
         }
     }
-
 
     private int sendAcmControlMessage(int request, int value, byte[] buf) {
         return mConnection.controlTransfer(
@@ -267,7 +268,8 @@ public class CdcAcmSerialDriver extends CommonUsbSerialDriver {
 
     public static SparseArray<int[]> getSupportedDevices() {
         final SparseArray<int[]> supportedDevices = new SparseArray<int[]>(11);
-        supportedDevices.put(UsbId.VENDOR_ARDUINO,
+        if (BuildConfig.DEBUG && !(supportedDevices.indexOfKey(Integer.valueOf(UsbId.VENDOR_ARDUINO)) < 0)) { throw new AssertionError(); }
+        supportedDevices.put(Integer.valueOf(UsbId.VENDOR_ARDUINO),
                 new int[] {
                         UsbId.ARDUINO_UNO,
                         UsbId.ARDUINO_UNO_R3,
@@ -278,28 +280,30 @@ public class CdcAcmSerialDriver extends CommonUsbSerialDriver {
                         UsbId.ARDUINO_MEGA_ADK,
                         UsbId.ARDUINO_MEGA_ADK_R3,
                         UsbId.ARDUINO_LEONARDO,
+                        UsbId.ARDUINO_MICRO,
                 });
-        supportedDevices.put(UsbId.VENDOR_VAN_OOIJEN_TECH,
-                new int[] {
-                    UsbId.VAN_OOIJEN_TECH_TEENSYDUINO_SERIAL,
-                });
-        supportedDevices.put(UsbId.VENDOR_ATMEL,
-                new int[] {
-                    UsbId.ATMEL_LUFA_CDC_DEMO_APP,
-                });
-        supportedDevices.put(UsbId.VENDOR_LEAFLABS,
-                new int[] {
-                    UsbId.LEAFLABS_MAPLE,
-                });
-        supportedDevices.put(UsbId.VENDOR_ARDUINO2,
+        if (BuildConfig.DEBUG && !(supportedDevices.indexOfKey(Integer.valueOf(UsbId.VENDOR_VAN_OOIJEN_TECH)) < 0)) { throw new AssertionError(); }
+        supportedDevices.put(Integer.valueOf(UsbId.VENDOR_VAN_OOIJEN_TECH),
                 new int[] {
                         UsbId.VAN_OOIJEN_TECH_TEENSYDUINO_SERIAL,
-                        UsbId.PIXHAWK,
                 });
+        if (BuildConfig.DEBUG && !(supportedDevices.indexOfKey(Integer.valueOf(UsbId.VENDOR_ATMEL)) < 0)) { throw new AssertionError(); }
+        supportedDevices.put(Integer.valueOf(UsbId.VENDOR_ATMEL),
+                new int[] {
+                        UsbId.ATMEL_LUFA_CDC_DEMO_APP,
+                });
+        if (BuildConfig.DEBUG && !(supportedDevices.indexOfKey(Integer.valueOf(UsbId.VENDOR_LEAFLABS)) < 0)) { throw new AssertionError(); }
+        supportedDevices.put(Integer.valueOf(UsbId.VENDOR_LEAFLABS),
+                new int[] {
+                        UsbId.LEAFLABS_MAPLE,
+                });
+        if (BuildConfig.DEBUG && !(supportedDevices.indexOfKey(Integer.valueOf(UsbId.VENDOR_PX4)) < 0)) { throw new AssertionError(); }
         supportedDevices.put(Integer.valueOf(UsbId.VENDOR_PX4),
                 new int[] {
                         UsbId.DEVICE_PX4FMU,
+                        UsbId.DEVICE_RADIOLINK_MINI,
                 });
+        if (BuildConfig.DEBUG && !(supportedDevices.indexOfKey(Integer.valueOf(UsbId.VENDOR_UBLOX)) < 0)) { throw new AssertionError(); }
         supportedDevices.put(Integer.valueOf(UsbId.VENDOR_UBLOX),
                 new int[] {
                         UsbId.DEVICE_UBLOX_5,
@@ -307,6 +311,7 @@ public class CdcAcmSerialDriver extends CommonUsbSerialDriver {
                         UsbId.DEVICE_UBLOX_7,
                         UsbId.DEVICE_UBLOX_8,
                 });
+        if (BuildConfig.DEBUG && !(supportedDevices.indexOfKey(Integer.valueOf(UsbId.VENDOR_OPENPILOT)) < 0)) { throw new AssertionError(); }
         supportedDevices.put(Integer.valueOf(UsbId.VENDOR_OPENPILOT),
                 new int[] {
                         UsbId.DEVICE_CC3D,
@@ -314,22 +319,27 @@ public class CdcAcmSerialDriver extends CommonUsbSerialDriver {
                         UsbId.DEVICE_SPARKY2,
                         UsbId.DEVICE_OPLINK,
                 });
+        if (BuildConfig.DEBUG && !(supportedDevices.indexOfKey(Integer.valueOf(UsbId.VENDOR_ARDUPILOT_CHIBIOS1)) < 0)) { throw new AssertionError(); }
         supportedDevices.put(Integer.valueOf(UsbId.VENDOR_ARDUPILOT_CHIBIOS1),
                 new int[] {
                         UsbId.DEVICE_ARDUPILOT_CHIBIOS,
                 });
+        if (BuildConfig.DEBUG && !(supportedDevices.indexOfKey(Integer.valueOf(UsbId.VENDOR_ARDUPILOT_CHIBIOS2)) < 0)) { throw new AssertionError(); }
         supportedDevices.put(Integer.valueOf(UsbId.VENDOR_ARDUPILOT_CHIBIOS2),
                 new int[] {
                         UsbId.DEVICE_ARDUPILOT_CHIBIOS,
                 });
+        if (BuildConfig.DEBUG && !(supportedDevices.indexOfKey(Integer.valueOf(UsbId.VENDOR_DRAGONLINK)) < 0)) { throw new AssertionError(); }
         supportedDevices.put(Integer.valueOf(UsbId.VENDOR_DRAGONLINK),
                 new int[] {
                         UsbId.DEVICE_DRAGONLINK,
                 });
-        supportedDevices.put(Integer.valueOf(UsbId.VENDOR_RADIOLINK_MINI),
+        if (BuildConfig.DEBUG && !(supportedDevices.indexOfKey(Integer.valueOf(UsbId.VENDOR_ARM)) < 0)) { throw new AssertionError(); }
+        supportedDevices.put(Integer.valueOf(UsbId.VENDOR_ARM),
                 new int[] {
-                        UsbId.DEVICE_RADIOLINK_MINI,
+                        UsbId.ARM_MBED,
                 });
+
         return supportedDevices;
     }
 

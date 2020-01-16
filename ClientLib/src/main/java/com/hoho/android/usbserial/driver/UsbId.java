@@ -31,17 +31,23 @@ public final class UsbId {
 
     public static final int VENDOR_FTDI = 0x0403;
     public static final int FTDI_FT232R = 0x6001;
+    public static final int FTDI_FT2232H = 0x6010;
+    public static final int FTDI_FT4232H = 0x6011;
+    public static final int FTDI_FT232H = 0x6014;
     public static final int FTDI_FT231X = 0x6015;
     public static final int DEVICE_PIXHAWK_2_CUBE = 0x0016;
 
     public static final int VENDOR_PX4    = 0x26AC;
-    public static final int DEVICE_PX4FMU = 0x11;
+    public static final int DEVICE_PX4FMU = 0x0011;
+
+    public static final int VENDOR_ARDUINO2 = 0x26ac;
+    public static final int PIXHAWK = 0x0011;
+
 
     public static final int VENDOR_ATMEL = 0x03EB;
     public static final int ATMEL_LUFA_CDC_DEMO_APP = 0x2044;
 
     public static final int VENDOR_ARDUINO = 0x2341;
-    public static final int VENDOR_ARDUINO2 = 0x26ac;
     public static final int ARDUINO_UNO = 0x0001;
     public static final int ARDUINO_MEGA_2560 = 0x0010;
     public static final int ARDUINO_SERIAL_ADAPTER = 0x003b;
@@ -51,16 +57,19 @@ public final class UsbId {
     public static final int ARDUINO_MEGA_ADK_R3 = 0x0044;
     public static final int ARDUINO_SERIAL_ADAPTER_R3 = 0x0044;
     public static final int ARDUINO_LEONARDO = 0x8036;
-    public static final int PIXHAWK = 0x0011;
+    public static final int ARDUINO_MICRO = 0x8037;
 
     public static final int VENDOR_VAN_OOIJEN_TECH = 0x16c0;
     public static final int VAN_OOIJEN_TECH_TEENSYDUINO_SERIAL = 0x0483;
 
     public static final int VENDOR_LEAFLABS = 0x1eaf;
     public static final int LEAFLABS_MAPLE = 0x0004;
-    
+
     public static final int VENDOR_SILAB = 0x10c4;
-    public static final int SILAB_CP2102 = 0xea60;
+    public static final int SILABS_CP2102 = 0xea60;
+    public static final int SILABS_CP2105 = 0xea70;
+    public static final int SILABS_CP2108 = 0xea71;
+    public static final int SILABS_CP2110 = 0xea80;
 
     public static final int VENDOR_PROLIFIC = 0x067b;
     public static final int PROLIFIC_PL2303 = 0x2303;
@@ -87,6 +96,10 @@ public final class UsbId {
     public static final int VENDOR_RADIOLINK_MINI = 0x26ac;
     public static final int DEVICE_RADIOLINK_MINI = 0x0016;
 
+
+    // at www.linux-usb.org/usb.ids listed for NXP/LPC1768, but all processors supported by ARM mbed DAPLink firmware report these ids
+    public static final int VENDOR_ARM = 0x0d28;
+    public static final int ARM_MBED = 0x0204;
 
 
     private UsbId() {

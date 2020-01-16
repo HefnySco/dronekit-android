@@ -267,7 +267,10 @@ public class Cp2102SerialDriver extends CommonUsbSerialDriver {
         final SparseArray<int[]> supportedDevices = new SparseArray<int[]>(1);
         supportedDevices.put(UsbId.VENDOR_SILAB,
                 new int[] {
-                        UsbId.SILAB_CP2102
+                        UsbId.SILABS_CP2102,
+                        UsbId.SILABS_CP2105,
+                        UsbId.SILABS_CP2108,
+                        UsbId.SILABS_CP2110,
                 });
         return supportedDevices;
     }
