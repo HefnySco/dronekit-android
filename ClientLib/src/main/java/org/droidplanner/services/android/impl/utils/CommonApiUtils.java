@@ -147,6 +147,9 @@ public class CommonApiUtils {
             case FIXED_WING_LOITER:
                 return VehicleMode.PLANE_LOITER;
 
+            case FIXED_WING_TAKEOFF:
+                return VehicleMode.PLANE_TAKEOFF;
+
             case FIXED_WING_GUIDED:
                 return VehicleMode.PLANE_GUIDED;
 
