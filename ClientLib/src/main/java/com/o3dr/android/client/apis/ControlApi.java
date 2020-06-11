@@ -17,6 +17,7 @@ import static com.o3dr.services.android.lib.drone.action.ControlActions.ACTION_L
 import static com.o3dr.services.android.lib.drone.action.ControlActions.ACTION_RESET_ROI;
 import static com.o3dr.services.android.lib.drone.action.ControlActions.ACTION_SEND_BRAKE_VEHICLE;
 import static com.o3dr.services.android.lib.drone.action.ControlActions.ACTION_SEND_GUIDED_POINT;
+import static com.o3dr.services.android.lib.drone.action.ControlActions.ACTION_SEND_GUIDED_VELOCITY;
 import static com.o3dr.services.android.lib.drone.action.ControlActions.ACTION_SET_CONDITION_YAW;
 import static com.o3dr.services.android.lib.drone.action.ControlActions.ACTION_SET_GUIDED_ALTITUDE;
 import static com.o3dr.services.android.lib.drone.action.ControlActions.ACTION_SET_VELOCITY;
@@ -86,6 +87,25 @@ public class ControlApi extends Api {
         Bundle params = new Bundle();
         drone.performAsyncActionOnDroneThread(new Action(ACTION_SEND_BRAKE_VEHICLE, params), listener);
     }
+
+    /**
+     * Control Drone in Guided mode using velocity and yaw
+     * @param vx  velocity in m/s
+     * @param vy  velocity in m/s
+     * @param vz  velocity in m/s
+     * @param yaw target angle
+     * @param listener
+     */
+    public void guidedVelocity(final double vx, final double vy, final double vz, final double yaw, AbstractCommandListener listener)
+    {
+        Bundle params = new Bundle();
+        params.putDouble(EXTRA_VELOCITY_X, vx);
+        params.putDouble(EXTRA_VELOCITY_Y, vy);
+        params.putDouble(EXTRA_VELOCITY_Z, vz);
+        params.putDouble(EXTRA_YAW_TARGET_ANGLE, yaw);
+        drone.performAsyncActionOnDroneThread(new Action(ACTION_SEND_GUIDED_VELOCITY, params), listener);
+    }
+
 
     /**
      * Instructs the vehicle to go to the specified location.

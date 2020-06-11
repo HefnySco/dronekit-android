@@ -869,6 +869,14 @@ public class CommonApiUtils {
         drone.getMavClient().sendMessage(message, null);
     }
 
+    public static void setGuidedVelocity(final MavLinkDrone drone, final double xVel, final double yVel, final double zVel, final double yaw, ICommandListener listener)
+    {
+        if (drone == null)
+            return;
+
+        drone.getGuidedPoint().newGuidedVelocity(xVel, yVel, zVel, yaw);
+    }
+
     public static void sendGuidedPoint(MavLinkDrone drone, LatLong point, boolean force, ICommandListener listener) {
         if (drone == null)
             return;

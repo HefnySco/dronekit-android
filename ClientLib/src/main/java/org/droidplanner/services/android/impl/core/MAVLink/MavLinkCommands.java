@@ -18,9 +18,12 @@ public class MavLinkCommands {
 
     public static final int EMERGENCY_DISARM_MAGIC_NUMBER = 21196;
 
-    private static final int MAVLINK_SET_POS_TYPE_MASK_POS_IGNORE = ((1 << 0) | (1 << 1) | (1 << 2));
-    private static final int MAVLINK_SET_POS_TYPE_MASK_VEL_IGNORE = ((1 << 3) | (1 << 4) | (1 << 5));
-    private static final int MAVLINK_SET_POS_TYPE_MASK_ACC_IGNORE = ((1 << 6) | (1 << 7) | (1 << 8));
+    private static final int  MAVLINK_SET_POS_TYPE_MASK_POS_IGNORE           = ((1 << 0) | (1 << 1) | (1 << 2));
+    private static final int  MAVLINK_SET_POS_TYPE_MASK_VEL_IGNORE           = ((1 << 3) | (1 << 4) | (1 << 5));
+    private static final int  MAVLINK_SET_POS_TYPE_MASK_ACC_IGNORE           = ((1 << 6) | (1 << 7) | (1 << 8));
+    private static final int  MAVLINK_SET_POS_TYPE_MASK_FORCE                = (1<<9);
+    private static final int  MAVLINK_SET_POS_TYPE_MASK_YAW_IGNORE           = (1<<10);
+    private static final int  MAVLINK_SET_POS_TYPE_MASK_YAW_RATE_IGNORE      = (1<<11);
 
     public static void changeMissionSpeed(MavLinkDrone drone, float speed, ICommandListener listener) {
         msg_command_long msg = new msg_command_long();
@@ -65,13 +68,14 @@ public class MavLinkCommands {
         drone.getMavClient().sendMessage(msg, null);
     }
 
-    public static void sendGuidedVelocity(MavLinkDrone drone, double xVel, double yVel, double zVel){
+    public static void sendGuidedVelocity(MavLinkDrone drone, double xVel, double yVel, double zVel, double yaw){
         msg_set_position_target_global_int msg = new msg_set_position_target_global_int();
-        msg.type_mask = MAVLINK_SET_POS_TYPE_MASK_ACC_IGNORE | MAVLINK_SET_POS_TYPE_MASK_POS_IGNORE;
-        msg.coordinate_frame = MAV_FRAME.MAV_FRAME_GLOBAL_RELATIVE_ALT_INT;
+        msg.type_mask =  MAVLINK_SET_POS_TYPE_MASK_POS_IGNORE | MAVLINK_SET_POS_TYPE_MASK_ACC_IGNORE | MAVLINK_SET_POS_TYPE_MASK_YAW_RATE_IGNORE;
+        msg.coordinate_frame = MAV_FRAME.MAV_FRAME_BODY_NED;
         msg.vx = (float) xVel;
         msg.vy = (float) yVel;
         msg.vz = (float) zVel;
+        msg.yaw = (float) yaw;
         msg.target_system = drone.getSysid();
         msg.target_component = drone.getCompid();
         drone.getMavClient().sendMessage(msg, null);
